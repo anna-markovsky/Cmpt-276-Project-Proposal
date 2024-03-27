@@ -14,86 +14,86 @@
 </head>
 <body>
 
-    <h1 class="main-header">
-        <img src="stylesheets/logo.jpg" alt="logo" style="padding-right: 20px; width: 160px; ">
-        Toy and Clothing Inventory 
+<h1 class="main-header">
+    <img src="stylesheets/logo.jpg" alt="logo" style="padding-right: 20px; width: 160px; ">
+    Toy and Clothing Inventory
+</h1>
+
+<nav class="nav-style">
+    <section class="nav-left">
+        <a href="./protected">View inventory</a>
+    </section>
+
+    <section class="nav-right">
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </section>
+</nav>
+
+<section id="main-options">
+    <h1 class="head-settings">
+        User Settings
     </h1>
 
-    <nav class="nav-style">
-        <section class="nav-left">
-            <a href="./protected">View inventory</a>
-        </section>
-
-        <section class="nav-right">
-            <button onclick="logout()" class="logout-btn">Logout</button>
-        </section>
-    </nav>
-
-    <section id="main-options">
-        <h1 class="head-settings">
-            User Settings
-        </h1>
-    
-        <section id="settings-options">
-            <button class="name-button" onclick="showChangeName()">Change username</button><br>
-            <button class="password-button" onclick="showChangePassword()">Change password</button>
-        </section>
+    <section id="settings-options">
+        <button class="name-button" onclick="showChangeName()">Change username</button><br>
+        <button class="password-button" onclick="showChangePassword()">Change password</button>
     </section>
+</section>
 
 
-    <section id="change-name-page">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <h1 class="text-center mt-5 mb-4">Change username </h1>
-                    <form action="/changename" method="post">
-        
-                        <div class="mb-3">
-                            <input type="text" id="newusername" name="newusername" class="form-control form-control-lg"
-                                   placeholder="New username" required>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <input class="btn btn-primary" type="submit" value="Change to new username"></input>
-                        </div>
-                    </form>
-                    <div th:if="${error}" class="error-message">
-                        <p th:text="${error}" style="color: red; font-size: x-large; font-weight: bold; font-family: 'Plus Jakarta Sans', sans-serif;"></p>
+<section id="change-name-page">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="text-center mt-5 mb-4">Change username</h1>
+                <form action="/changename" method="post">
+
+                    <div class="mb-3">
+                        <input type="text" id="newusername" name="newusername" class="form-control form-control-lg"
+                               placeholder="New username" required>
                     </div>
+                    <div class="d-grid gap-2">
+                        <input class="btn btn-primary" type="submit" value="Change to new username"></input>
+                    </div>
+                </form>
+                <div th:if="${error}" class="error-message">
+                    <p th:text="${error}" style="color: red; font-size: x-large; font-weight: bold; font-family: 'Plus Jakarta Sans', sans-serif;"></p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="change-pass-page">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <h1 class="text-center mt-5 mb-4">Change password</h1>
-                    <p>Your old password must be correct to change your password</p>
-                    <form action="/changepass" method="post">
-        
-                        <div class="mb-3">
-                            <input type="password" id="oldpass" name="oldpass" class="form-control form-control-lg"
-                                   placeholder="Old password" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" id="newpass" name="newpass" class="form-control form-control-lg"
-                                   placeholder="New password" required>
-                        </div>
-                        <div>
-                            <input type="checkbox" onclick="showpass()"> Show Password
-                        </div>
-                        <div class="d-grid gap-2">
-                            <input class="btn btn-primary" type="submit" value="Change to new password"></input>
-                        </div>
-                    </form>
-                    <div th:if="${error}" class="error-message">
-                        <p th:text="${error}" style="color: red; font-size: x-large; font-weight: bold; font-family: 'Plus Jakarta Sans', sans-serif;"></p>
+<section id="change-pass-page">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="text-center mt-5 mb-4">Change password</h1>
+                <p>Your old password must be correct to change your password</p>
+                <form action="/changepass" method="post">
+
+                    <div class="mb-3">
+                        <input type="password" id="oldpass" name="oldpass" class="form-control form-control-lg"
+                               placeholder="Old password" required>
                     </div>
+                    <div class="mb-3">
+                        <input type="password" id="password" name="password" class="form-control form-control-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="password" required>
+
+                    </div>
+                    <div>
+                        <input type="checkbox" onclick="showpass()"> Show Password
+                    </div>
+                    <div class="d-grid gap-2">
+                        <input class="btn btn-primary" type="submit" value="Change to new password"></input>
+                    </div>
+                </form>
+                <div th:if="${error}" class="error-message">
+                    <p th:text="${error}" style="color: red; font-size: x-large; font-weight: bold; font-family: 'Plus Jakarta Sans', sans-serif;"></p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 </body>
 </html>
